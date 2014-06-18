@@ -64,9 +64,14 @@ case "$1" in
                 PID=$(cat $PIDFILE)
                 echo "Stopping ..."
                 $CLIEXEC -p $REDISPORT shutdown
+                TRY=3;
                 while [ -x /proc/${PID} ]
                 do
-                    echo "Waiting for Redis to shutdown ..."
+                    echo "Waiting for Redis to shutdown ... $TRY tries remaining"
+                    TRY=$((TRY-1))
+                    if [ $TRY -lt 0 ]; then
+                        kill $PID
+                    fi
                     sleep 1
                 done
                 echo "Redis stopped"
