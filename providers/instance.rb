@@ -7,7 +7,7 @@ def load_current_resource
   new_resource.user         new_resource.user  || node.redis.user
   new_resource.group        new_resource.group || node.redis.group
   new_resource.requirepass  new_resource.requirepass || node.redis.requirepass
-
+  
   new_resource.slaveof_ip   new_resource.slaveof_ip
   new_resource.slaveof_port new_resource.slaveof_port || node.redis.config.port
 
@@ -91,6 +91,7 @@ end
 
 def create_config
   redis_service_name = redis_service
+  new_resource.requirepass "'#{new_resource.requirepass}'" if new_resource.requirepass != nil
   template "#{new_resource.conf_dir}/#{new_resource.name}.conf" do
     cookbook "redis"
     source "redis.conf.erb"
