@@ -17,3 +17,4 @@ default.redis.config.activerehashing = true
 default.redis.config.slaveof_ip      = nil
 default.redis.config.slaveof_port    = node.redis.config.port
 default.redis.config.requirepass     = nil
+default.redis.config.masterauth      = nil

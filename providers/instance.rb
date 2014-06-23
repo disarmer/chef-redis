@@ -7,6 +7,7 @@ def load_current_resource
   new_resource.user         new_resource.user  || node.redis.user
   new_resource.group        new_resource.group || node.redis.group
   new_resource.requirepass  new_resource.requirepass || node.redis.requirepass
+  new_resource.masterauth   new_resource.masterauth || node.redis.masterauth
   
   new_resource.slaveof_ip   new_resource.slaveof_ip
   new_resource.slaveof_port new_resource.slaveof_port || node.redis.config.port
