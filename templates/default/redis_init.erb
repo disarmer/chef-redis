@@ -21,6 +21,7 @@
 
 
 REDISPORT=<%= @port %>
+PASS=<%= @requirepass %>
 
 <% if node.redis.install_type == "source" %>
 EXEC=<%= node.redis.dst_dir %>/bin/redis-server
@@ -63,8 +64,8 @@ case "$1" in
         else
                 PID=$(cat $PIDFILE)
                 echo "Stopping ..."
-                $CLIEXEC -p $REDISPORT shutdown
-                TRY=3;
+                $CLIEXEC -a $PASS -p $REDISPORT shutdown
+                TRY=10;
                 while [ -x /proc/${PID} ]
                 do
                     echo "Waiting for Redis to shutdown ... $TRY tries remaining"
