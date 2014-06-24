@@ -20,6 +20,7 @@ attribute :failover_timeout,        :kind_of => Fixnum, :default => 900000
 attribute :parallel_syncs,          :kind_of => Fixnum, :default => 1
 attribute :quorum,                  :kind_of => Fixnum, :default => 2
 attribute :port,                    :kind_of => Fixnum, :default => 26379
+attribute :auth_pass,               :kind_of => String
 
 # Example generated config
 #sentinel monitor mymaster 127.0.0.1 6379 2
@@ -37,5 +38,6 @@ state_attrs(
   :monitor,
   :down_after_milliseconds,
   :failover_timeout,
+  :auth_pass,
   :parallel_syncs
 )

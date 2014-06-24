@@ -6,3 +6,4 @@ default.redis.sentinel.failover_timeout        = 900000
 default.redis.sentinel.parallel_syncs          = 1
 default.redis.sentinel.daemonize               = true
 default.redis.sentinel.pidfile                 = "/var/run/redis/redis-sentinel.pid"
+default.redis.sentinel.auth_pass               = nil

@@ -7,6 +7,7 @@ def load_current_resource
 
   monitor_string = [new_resource.monitor_address, new_resource.monitor_port, new_resource.quorum].join(" ")
   new_resource.monitor     new_resource.monitor   || monitor_string
+  new_resource.auth_pass new_resource.auth_pass || node.redis.sentinel.auth_pass || node['redis-cluster'][:password]
 end
 
 action :create do
