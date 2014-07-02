@@ -71,7 +71,7 @@ case "$1" in
                     echo "Waiting for Redis to shutdown ... $TRY tries remaining"
                     TRY=$((TRY-1))
                     if [ $TRY -lt 0 ]; then
-                      if [ $TRY -lt 0 ];then
+                      if [ $TRY -lt -5 ];then
                         kill -9 $PID
                       else 
                         kill $PID
