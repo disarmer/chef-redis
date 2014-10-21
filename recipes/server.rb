@@ -12,3 +12,8 @@ redis_instance "server" do
     send(attribute, value)
   end
 end
+
+cookbook_file "sysctl" do
+  path '/etc/sysctl.d/99-redis-sysctl.conf'
+  action :create
+end
